@@ -10,7 +10,7 @@ public class KafkaTopic {
     @Bean
     public NewTopic topic() {
         return TopicBuilder
-                .name("topic.text.message")
+                .name("topic.text.sensor")
                 .partitions(3)
                 .build();
     }

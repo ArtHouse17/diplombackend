@@ -1,9 +1,8 @@
 package art.emulator.controller;
 
-import art.emulator.dto.SensorDTO;
+import art.backend.dto.SensorDTO;
 import art.emulator.service.EmulationService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

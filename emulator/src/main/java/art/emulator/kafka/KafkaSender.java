@@ -1,6 +1,6 @@
 package art.emulator.kafka;
 
-import art.emulator.dto.SensorDTO;
+import art.backend.dto.SensorDTO;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Component;
 

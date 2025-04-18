@@ -20,6 +20,8 @@ public class SensorDTO {
     private Boolean isDanger;
     private String message;
 
+    private Double coordX;
+    private Double coordY;
 
 }
 
