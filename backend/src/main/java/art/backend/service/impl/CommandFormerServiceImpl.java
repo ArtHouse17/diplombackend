@@ -5,6 +5,7 @@ import art.backend.dto.SensorDTO;
 import art.backend.kafka.KafkaSender;
 import art.backend.service.impl.enums.Chemicalparam;
 import art.backend.service.impl.enums.EventTypes;
+import art.backend.service.impl.enums.FireParam;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -26,6 +27,13 @@ public class CommandFormerServiceImpl {
                     sendCommand(sb.append("Сообщение оператору! Датчик ").append(data.getId()).append(" превысил дежурное значение!").toString(), "Оператор");
                 }else{
                     sendCommand(sb.append("execute(splashing, airintake, sewage").toString(), "Вентиляционная, противопожарная, канализационная система");
+                }
+                break;
+            case Fire:
+                if (data.getTemperature() < FireParam.FIREPARAM.getParam() && data.getTemperature() > FireParam.NEEDTOCHECK.getParam()) {
+                    sendCommand(sb.append("Сообщение оператору! Датчик ").append(data.getId()).append(" превысил дежурное значение!").toString(), "Оператор");
+                }else{
+                    sendCommand(sb.append("execute(splashing)").toString(), "Противопожарная система");
                 }
         }
     }
