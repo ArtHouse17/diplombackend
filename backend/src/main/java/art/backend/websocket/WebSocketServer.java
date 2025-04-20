@@ -43,6 +43,7 @@ public class WebSocketServer extends TextWebSocketHandler {
                 }
             }
         }
+        sensors.clear();
     }
 
     private void sendSensorData(WebSocketSession session) throws IOException {
@@ -52,6 +53,7 @@ public class WebSocketServer extends TextWebSocketHandler {
                 String message = objectMapper.writeValueAsString(sensor);
                 session.sendMessage(new TextMessage(message));
                 System.out.println("Sent message: " + message);
+
             }
         }
     }

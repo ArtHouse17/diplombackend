@@ -1,5 +1,6 @@
-package art.emulator.kafka;
+package art.backend.kafka;
 
+import art.backend.dto.CommandDTO;
 import art.backend.dto.SensorDTO;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -21,7 +22,7 @@ public class KafkaProducerConfig {
     private String bootstrapServers;
 
     @Bean
-    public ProducerFactory<String, SensorDTO> producerFactory() {
+    public ProducerFactory<String, CommandDTO> producerFactory() {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(
                 ProducerConfig.BOOTSTRAP_SERVERS_CONFIG,
@@ -36,7 +37,7 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public KafkaTemplate<String, SensorDTO> kafkaTemplate() {
+    public KafkaTemplate<String, CommandDTO> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }

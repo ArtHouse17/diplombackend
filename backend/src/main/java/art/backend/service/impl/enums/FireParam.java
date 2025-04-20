@@ -1,10 +1,10 @@
 package art.backend.service.impl.enums;
 
-public enum Chemicalparam {
-    CHEMICALPARAM(30d),
+public enum FireParam {
+    FIREPARAM(30d),
     NEEDTOCHECK(20d);
 
-    private Chemicalparam(Double param) {
+    private FireParam(Double param) {
         this.param = param;
     }
 

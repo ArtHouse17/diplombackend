@@ -1,21 +1,26 @@
 package art.backend.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Data
+@Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "sensor")
 public class Sensor {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String sensortype;
     private String status;
     private LocalDateTime installationtime;
 
     @ManyToOne
+    @JoinColumn(name = "location")
     private Location location;
 }
