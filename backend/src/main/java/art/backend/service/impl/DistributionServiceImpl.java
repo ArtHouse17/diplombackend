@@ -9,6 +9,7 @@ import art.backend.service.DistributionService;
 import art.backend.service.TemperatureSensorService;
 import art.backend.service.WorkerSensorService;
 import art.backend.service.impl.enums.EventTypes;
+import art.backend.websocket.WebSocketServer;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +27,7 @@ public class DistributionServiceImpl implements DistributionService {
     private final CommandFormerServiceImpl commandFormerServiceImpl;
     private final SensorReadingDAO sensorReadingDAO;
     private final SensorDAO sensorDAO;
+    private final WebSocketServer webSocketServer;
 
     public void distributeSensors(SensorDTO data) {
         SensorReading sensorReading;
@@ -59,8 +61,16 @@ public class DistributionServiceImpl implements DistributionService {
             case "pres":
                 break;
             case "worker":
-                //workerSensorService.processWorker(data);
-                break;
+                try {
+                    if (webSocketServer != null) {
+                        webSocketServer.addSensor(data);
+                    } else {
+                        throw new IllegalStateException("WebSocketServer is not initialized");
+                    }
+                    break;
+                }catch (Exception e) {
+                    e.printStackTrace();
+                }
         }
 
     }

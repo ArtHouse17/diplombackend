@@ -24,28 +24,28 @@ public class CommandFormerServiceImpl {
         switch (type) {
             case Chemical:
                 if (data.getConcentration() < Chemicalparam.CHEMICALPARAM.getParam() && data.getConcentration() > Chemicalparam.NEEDTOCHECK.getParam()) {
-                    sendCommand(sb.append("Сообщение оператору! Датчик ").append(data.getId()).append(" превысил дежурное значение!").toString(), "Оператор");
+                    sendCommand(sb.append("Сообщение оператору! Датчик ").append(data.getId()).append(" превысил дежурное значение!").toString(), "Оператор", 1);
                 }else{
-                    sendCommand(sb.append("execute(splashing, airintake, sewage").toString(), "Вентиляционная, противопожарная, канализационная система");
+                    sendCommand(sb.append("execute(splashing, airintake, sewage)").toString(), "Вентиляционная, противопожарная, канализационная система, экстренные службы", 2);
                 }
                 break;
             case Fire:
                 if (data.getTemperature() < FireParam.FIREPARAM.getParam() && data.getTemperature() > FireParam.NEEDTOCHECK.getParam()) {
-                    sendCommand(sb.append("Сообщение оператору! Датчик ").append(data.getId()).append(" превысил дежурное значение!").toString(), "Оператор");
+                    sendCommand(sb.append("Сообщение оператору! Датчик ").append(data.getId()).append(" превысил дежурное значение!").toString(), "Оператор", 1);
                 }else{
-                    sendCommand(sb.append("execute(splashing)").toString(), "Противопожарная система");
+                    sendCommand(sb.append("execute(splashing, sewage)").toString(), "Противопожарная система, экстренные службы",3);
                 }
         }
     }
 
-    private void sendCommand(String command, String service) {
+    private void sendCommand(String command, String service, Integer id) {
         CommandDTO commandDTO = CommandDTO.builder()
+                .id(id)
                 .service(service)
                 .time(LocalDateTime.now())
                 .command(command)
                 .build();
         System.out.println(commandDTO);
-        // TODO: Дописать отправку через кафку на сервис имитации
         kafkaSender.send("topic.text.command", commandDTO);
     }
 }

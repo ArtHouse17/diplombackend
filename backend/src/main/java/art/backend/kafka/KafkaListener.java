@@ -21,10 +21,5 @@ public class KafkaListener {
     public void listener(SensorDTO data) throws IOException {
         System.out.println(data);
         distributionService.distributeSensors(data);
-        if (webSocketServer != null) {
-            webSocketServer.addSensor(data);
-        } else {
-            throw new IllegalStateException("WebSocketServer is not initialized");
-        }
     }
 }

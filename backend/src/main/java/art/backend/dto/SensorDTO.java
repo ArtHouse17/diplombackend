@@ -13,6 +13,7 @@ public class SensorDTO {
     private String id;
     private String type;
     private String status;
+    // Заменить потом класс
     private int location;
 
     private Double temperature;

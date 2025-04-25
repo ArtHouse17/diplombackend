@@ -1,0 +1,36 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="1745261357198-1" author="ArtHouse17">
+        <sql endDelimiter=";">
+            insert into location (id, coordinatex, coordinatey, name) values (1, 50, 89, 'Процесс дозирования');
+            insert into location (id, coordinatex, coordinatey, name) values (2, 45, 79, 'Процесс дозирования');
+            insert into location (id, coordinatex, coordinatey, name) values (3, 51, 65, 'Процесс дозирования');
+            insert into location (id, coordinatex, coordinatey, name) values (4, 48, 56, 'Процесс дозирования');
+            insert into location (id, coordinatex, coordinatey, name) values (5, 58, 56, 'Процесс дозирования');
+            insert into location (id, coordinatex, coordinatey, name) values (6, 43, 71, 'Процесс дозирования');
+            insert into location (id, coordinatex, coordinatey, name) values (7, 22, 71, 'Процесс смешивание');
+            insert into location (id, coordinatex, coordinatey, name) values (8, 27, 77, 'Процесс гранулирования');
+            insert into location (id, coordinatex, coordinatey, name) values (9, 18, 87, 'Процесс топки');
+            insert into location (id, coordinatex, coordinatey, name) values (10, 18, 59, 'Процесс сушки');
+            insert into location (id, coordinatex, coordinatey, name) values (11, 22, 48, 'Процесс аспирации');
+            insert into location (id, coordinatex, coordinatey, name) values (12, 32, 25, 'Процесс отбора');
+            insert into location (id, coordinatex, coordinatey, name) values (13, 32, 25, 'Процесс лакирования');
+            insert into location (id, coordinatex, coordinatey, name) values (14, 20, 18, 'Процесс абсорбции');
+            insert into location (id, coordinatex, coordinatey, name) values (15, 5, 25, 'Процесс упаковки');
+            insert into location (id, coordinatex, coordinatey, name) values (16, 13, 50, 'Процесс аспирации');
+            insert into location (id, coordinatex, coordinatey, name) values (17, 18, 28, 'Процесс охлаждения');
+            insert into location (id, coordinatex, coordinatey, name) values (18, 35, 58, 'Процесс дробления');
+        </sql>
+        <loadData tableName="sensor" file="db/data/sensors.csv"/>
+    </changeSet>
+
+    <changeSet id="1745310382760-1" author="ArtHouse17">
+        <sql endDelimiter=";">
+            update location set coordinatex = 51 where id = 2
+        </sql>
+    </changeSet>
+</databaseChangeLog>

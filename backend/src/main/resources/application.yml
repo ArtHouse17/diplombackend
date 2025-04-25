@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: backend
+  kafka:
+    bootstrap-servers: localhost:9092
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: user
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+  data:
+    jdbc:
+      dialect: postgresql
+  liquibase:
+    change-log: db/changelog/main-changelog.xml
+server:
+  port: 8080

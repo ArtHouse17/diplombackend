@@ -1,6 +1,7 @@
 package art.backend.service.impl;
 
 import art.backend.dao.LogDAO;
+import art.backend.dao.SensorDAO;
 import art.backend.dto.SensorDTO;
 import art.backend.entity.Log;
 import art.backend.entity.Sensor;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 public class LogsFormerServiceImpl {
 
     private final LogDAO logDAO;
+    private final SensorDAO sensorDAO;
 
     public void processLog(SensorDTO data, EventTypes type) {
         StringBuilder message = new StringBuilder();
@@ -39,6 +41,7 @@ public class LogsFormerServiceImpl {
                 .eventtype(event)
                 .description(message)
                 .timestamp(LocalDateTime.now())
+                .sensor(sensorDAO.findSensorBySensortype(data.getId()))
                 .build();
         logDAO.save(log);
     }

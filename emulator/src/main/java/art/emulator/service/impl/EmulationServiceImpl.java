@@ -10,10 +10,10 @@ public class EmulationServiceImpl implements EmulationService {
     @Override
     public SensorDTO emulateTemperatureSensor() {
         SensorDTO sensorDTO = new SensorDTO();
-        sensorDTO.setId("temp" + ThreadLocalRandom.current().nextInt(18));
+        sensorDTO.setId("temp" + ThreadLocalRandom.current().nextInt(1,19));
         sensorDTO.setType("temp");
         sensorDTO.setUnit("Celsius");
-        sensorDTO.setTemperature(ThreadLocalRandom.current().nextDouble(10,40));
+        sensorDTO.setTemperature(ThreadLocalRandom.current().nextDouble(0,40));
         sensorDTO.setStatus("OK");
         sensorDTO.setCoordX(ThreadLocalRandom.current().nextDouble(25,55));
         sensorDTO.setCoordY(ThreadLocalRandom.current().nextDouble(40,100));
@@ -21,10 +21,10 @@ public class EmulationServiceImpl implements EmulationService {
     }
     public SensorDTO emulateChemicalSensor() {
         SensorDTO sensorDTO = new SensorDTO();
-        sensorDTO.setId("chem" + ThreadLocalRandom.current().nextInt(18));
+        sensorDTO.setId("chem" + ThreadLocalRandom.current().nextInt(1,19));
         sensorDTO.setType("chem");
         sensorDTO.setUnit("Concentration");
-        sensorDTO.setConcentration(ThreadLocalRandom.current().nextDouble(10,40));
+        sensorDTO.setConcentration(ThreadLocalRandom.current().nextDouble(0,40));
         sensorDTO.setStatus("OK");
         sensorDTO.setCoordX(ThreadLocalRandom.current().nextDouble(25,55));
         sensorDTO.setCoordY(ThreadLocalRandom.current().nextDouble(40,100));
@@ -42,7 +42,7 @@ public class EmulationServiceImpl implements EmulationService {
 
     public SensorDTO emulateWorkerSensor() {
         SensorDTO sensorDTO = new SensorDTO();
-        sensorDTO.setId("worker" + ThreadLocalRandom.current().nextInt(5));
+        sensorDTO.setId("work" + ThreadLocalRandom.current().nextInt(1,5));
         sensorDTO.setType("worker");
         sensorDTO.setStatus("OK");
         sensorDTO.setCoordX(ThreadLocalRandom.current().nextDouble(25,55));
