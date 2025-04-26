@@ -61,6 +61,7 @@ public class DistributionServiceImpl implements DistributionService {
             case "pres":
                 break;
             case "worker":
+                workerSensorService.processWorker(data);
                 try {
                     if (webSocketServer != null) {
                         webSocketServer.addSensor(data);

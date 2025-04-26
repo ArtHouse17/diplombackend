@@ -33,4 +33,7 @@
             update location set coordinatex = 51 where id = 2
         </sql>
     </changeSet>
+    <changeSet id="1745667981964-1" author="ArtHouse17">
+        <loadData tableName="employee" file="db/data/employee.csv"/>
+    </changeSet>
 </databaseChangeLog>
